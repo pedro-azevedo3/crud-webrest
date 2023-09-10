@@ -22,6 +22,31 @@ All AI Brain projects are written in `*.py` using the latest features of [Python
 
 🛠️ Configuration
 -----
+For working this aplication you need to create and setup a virtual enviroment.
+
+If you are a Linux/MacOS🐧🍎 user, try this command to create the virtual enviroment (venv):
+
+```python3 -m venv enviroment_name```
+
+Now you need to activate de virtual enviroment:
+
+```source enviroment_name/bin/activate```
+
+To desactivate the virtual enviroment type "desactivate" on your terminal.
+
+For Windows📎 Users:
+Try this command to create the virtual enviroment (venv):
+
+```python -m venv enviroment_name```
+
+Now, to activate the virtual enviroment:
+
+```enviroment_name\Scripts\activate```
+
+To desactivate the virtual enviroment type "desactivate" on your terminal.
+
+Once you have your virtual enviroment working.
+Execute the command 'make setup'to install all the dependencies of the application.
 
 ⁉️ FAQ & Troubleshooting
 -----
