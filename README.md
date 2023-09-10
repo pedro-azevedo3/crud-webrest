@@ -34,7 +34,8 @@ Now you need to activate de virtual enviroment:
 
 To desactivate the virtual enviroment type "desactivate" on your terminal.
 
-For Windows📎 Users:
+For Windows📎 Users:]
+
 Try this command to create the virtual enviroment (venv):
 
 ```python -m venv enviroment_name```
