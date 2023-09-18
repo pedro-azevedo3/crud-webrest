@@ -11,6 +11,8 @@ All AI Brain projects are written in `*.py` using the latest features of [Python
 🚩 Table of Contents
 -----
 
+📄 PDF Modules Section: We have the functionality of create, read,  update and delete a PDF!
+
 ▶️ Usage
 -----
 
@@ -24,8 +26,7 @@ All AI Brain projects are written in `*.py` using the latest features of [Python
 -----
 For working this aplication you need to create and setup a virtual enviroment.
 
-If you are a Linux/MacOS🐧🍎 user:
-Try this command to create the virtual enviroment (venv):
+If you are a Linux/MacOS🐧🍎 user, try this command to create the virtual enviroment (venv):
 
 ```python3 -m venv enviroment_name```
 
@@ -36,7 +37,6 @@ Now you need to activate de virtual enviroment:
 To desactivate the virtual enviroment type "desactivate" on your terminal.
 
 For Windows📎 Users:
-
 Try this command to create the virtual enviroment (venv):
 
 ```python -m venv enviroment_name```
