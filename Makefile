@@ -2,4 +2,4 @@ setup:
 	pip install -r requirements.txt
 
 run:
-	python app.py
+	python3 app.py
