@@ -15,14 +15,13 @@ class Player:
     def __repr__(self):
         return self.__dict__
 
-    def save(self, players):
+    def save(self):
         players.append(self)
         return self
     
-    @staticmethod
-    def get(players, player_id):
+    def get(self, id):
         for player in players:
-            if player.id == player_id:
+            if player.id == id:
                 return player
         return None
 

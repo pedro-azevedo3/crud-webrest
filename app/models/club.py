@@ -12,13 +12,13 @@ class Club:
     def __repr__(self):
         return self.__dict__
 
-    def save(self, clubs):
+    def save(self):
         clubs.append(self)
         return self
     
-    def get(clubs, club_id):
+    def get(self, id):
         for club in clubs:
-            if club.id == club_id:
+            if club.id == id:
                 return club
         return None
 
