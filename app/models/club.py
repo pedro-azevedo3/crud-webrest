@@ -1,36 +1,35 @@
 from datetime import datetime
 
-clubs = []
-
 class Club: 
-    def __init__(self, id, name):
-        self.id = id
-        self.user = name
+    def __init__(self, name):
+        self.name = name
         self.updatedAt = datetime.now()
         self.createdAt = datetime.now()
        
     def __repr__(self):
-        return self.__dict__
+        return {k:str(v) for k,v in self.__dict__.items()}
 
-    def save(self):
-        clubs.append(self)
+    def save(self, collection):
+        collection.insert_one(self.__repr__())
         return self
     
-    def get(self, id):
+    @staticmethod
+    def get(id, clubs):
         for club in clubs:
-            if club.id == id:
-                return club
+            if str(club.get("_id")) == id:
+                return Club(club.get("name"))
         return None
 
-    def update(self, body):
-        attributes_to_update = ["id"]
+    def update(self, body, name, collection):
+        attributes_to_update = ["name"]
         
         for attribute in attributes_to_update:
             setattr(self, attribute, body.get(attribute))
         
         self.updatedAt = datetime.now()
+        collection.update_one({"name":name},{"$set":self.__repr__()})
         return self
 
-    def delete(self, clubs):
-        clubs.remove(self)
+    def delete(self, collection):
+        collection.delete_one({"name":self.name})
         return self
