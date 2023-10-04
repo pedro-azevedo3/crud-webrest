@@ -36,6 +36,6 @@ def patch_player(player_id, request, mongo_client):
     player = Player.get(player_id, mongo_client.webrestapidb.players.find())
     if player:
         body = request.get_json()
-        player.update(body, player.name,player.age,player.club,player.position, mongo_client.webrestapidb.players)
+        player.update(body, player.club, player.name, player.age, player.position, mongo_client.webrestapidb.players)
         return jsonify({"data": player.__repr__()}), 200
     return jsonify({"data": "Player not found!"}), 404
