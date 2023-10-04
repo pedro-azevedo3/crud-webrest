@@ -24,7 +24,8 @@ class Player:
         return None
 
     def update(self, body, name, collection):
-        attributes_to_update = ["name"]
+        attributes_to_update = ["name","age","club","position"]
+        
         
         for attribute in attributes_to_update:
             setattr(self, attribute, body.get(attribute))
