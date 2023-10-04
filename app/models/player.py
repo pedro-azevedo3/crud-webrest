@@ -17,7 +17,7 @@ class Player:
         return self
     
     @staticmethod
-    def get(players, id):
+    def get(id, players):
         for player in players:
             if str(player.get("_id")) == id:
                 return Player(player.get("name"))
@@ -25,7 +25,6 @@ class Player:
 
     def update(self, body, name, age, club, position, collection):
         attributes_to_update = ["name","age","club","position"]
-        
         
         for attribute in attributes_to_update:
             setattr(self, attribute, body.get(attribute))
