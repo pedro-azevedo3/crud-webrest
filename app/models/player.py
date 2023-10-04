@@ -23,7 +23,7 @@ class Player:
                 return Player(player.get("club"), player.get("name"), player.get("age"), player.get("position"))
         return None
 
-    def update(self, body, name, age, club, position, collection):
+    def update(self, body, name, collection):
         old_name = name
         attributes_to_update = ["name","age","club","position"]
 
@@ -35,6 +35,6 @@ class Player:
         return self
 
 
-    def delete(self,collection):
-        collection.delete_one({"name":self.name})
+    def delete(self, collection):
+        collection.delete_one({"name":self.name, "age":self.age, "club":self.club, "position":self.position})
         return self

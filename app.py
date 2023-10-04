@@ -21,7 +21,7 @@ def save_player():
     return create_player(flask.request,client)
 
 @app.route('/players/<id>', methods=['DELETE'])
-def delete_player(id):
+def delete_players(id):
     return delete_player(id, client)
 
 @app.route('/players', methods=['GET'])
