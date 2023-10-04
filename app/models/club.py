@@ -21,13 +21,14 @@ class Club:
         return None
 
     def update(self, body, name, collection):
+        old_name = name
         attributes_to_update = ["name"]
 
         for attribute in attributes_to_update:
             setattr(self, attribute, body.get(attribute))
 
         self.updatedAt = datetime.now()
-        collection.update_one({"name":name},{"$set":self.__repr__()},{"upsert":True})
+        collection.update_one({"name":old_name},{"$set":self.__repr__()})
         return self
 
     def delete(self, collection):

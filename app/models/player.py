@@ -1,6 +1,6 @@
 import datetime
 
-class Player: 
+class Player:
     def __init__(self, club, name, age, position):
         self.name = name
         self.position = position
@@ -8,14 +8,14 @@ class Player:
         self.club = club
         self.updatedAt = datetime.datetime.now()
         self.createdAt = datetime.datetime.now()
-       
+
     def __repr__(self):
         return {k:str(v) for k,v in self.__dict__.items()}
 
     def save(self, collection):
         collection.insert_one(self.__repr__())
         return self
-    
+
     @staticmethod
     def get(id, players):
         for player in players:
@@ -24,13 +24,14 @@ class Player:
         return None
 
     def update(self, body, name, age, club, position, collection):
+        old_name = name
         attributes_to_update = ["name","age","club","position"]
-        
+
         for attribute in attributes_to_update:
             setattr(self, attribute, body.get(attribute))
 
         self.updatedAt = datetime.datetime.now()
-        collection.update_one({"club":club, "name":name, "age":age, "position":position},{"$set":self.__repr__()},{"upsert":True})
+        collection.update_one({"name":old_name},{"$set":self.__repr__()})
         return self
 
 
