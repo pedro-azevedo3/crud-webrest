@@ -29,7 +29,7 @@ class Player:
         for attribute in attributes_to_update:
             setattr(self, attribute, body.get(attribute))
 
-        self.updatedAt = datetime.now()
+        self.updatedAt = datetime.datetime.now()
         collection.update_one({"club":club},{"name":name},{"age":age},{"position":position},{"$set":self.__repr__()})
         return self
 
