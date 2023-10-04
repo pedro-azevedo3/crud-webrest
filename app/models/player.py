@@ -20,7 +20,7 @@ class Player:
     def get(id, players):
         for player in players:
             if str(player.get("_id")) == id:
-                return Player(player.get("name"))
+                return Player(player.get("club"), player.get("name"), player.get("age"), player.get("position"))
         return None
 
     def update(self, body, name, age, club, position, collection):
