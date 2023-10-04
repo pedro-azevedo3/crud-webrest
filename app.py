@@ -1,13 +1,15 @@
 import flask
 from flask import request
+from flask_cors import CORS
 from pymongo import MongoClient
 
 from app.controllers.routers import healthcheck
-from app.services.player import (create as create_player, delete as delete_player, list as list_player, get as get_player, patch as patch_player )
+from app.services.player import (create_player, delete_player, list_player,get_player ,patch_player )
 from app.services.club import (create, delete, list, get, patch)
 
 app = flask.Flask(__name__)
-client = MongoClient('mongodb://localhost:27017')
+cors = CORS(app)
+client = MongoClient('mongodb://45.6.38.11:27017')
 
 #Player
 @app.route('/',methods=['GET'])
@@ -23,7 +25,7 @@ def delete_player(id):
     return delete_player(id, client)
 
 @app.route('/players', methods=['GET'])
-def list_player():
+def list_players():
     return list_player(flask.request, client)
 
 @app.route('/players/<id>', methods=['GET'])

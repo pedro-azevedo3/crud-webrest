@@ -13,18 +13,16 @@ def delete(club_id, mongo_client):
     club = Club.get(club_id, mongo_client.webrestapidb.clubs.find())
     if club:
         club.delete(mongo_client.webrestapidb.clubs)
-        return jsonify({"data": [c.__repr__() for c in mongo_client.webrestapidb.clubs.find()]}), 410
+        return jsonify({"data": [c.__repr__() for c in mongo_client.webrestapidb.clubs.find()]}), 200
     return jsonify({"data": "Club not found!"}), 404
 
 def list(request, mongo_client):
     name_filter = request.args.get('name')
     filtered_clubs = mongo_client.webrestapidb.clubs.find()
-
     if name_filter:
-        filtered_clubs = [club for club in filtered_clubs if club.get("name") == name_filter]
-        return jsonify({"data": [club.__repr__() for club in filtered_clubs]}), 200
-
-    return jsonify({"data": [pdf.__repr__() for pdf in filtered_clubs]}), 200
+        filtered_clubs = [{k:str(v) if k == "_id" else v for k, v in club.items()} for club in filtered_clubs if club.get("name") == name_filter]
+        return jsonify({"data": filtered_clubs}), 200
+    return jsonify({"data": [{k:str(v) if k == "_id" else v for k, v in club.items()} for club in filtered_clubs]}), 200
 
 def get(clubs_id, mongo_client):
     club = Club.get(clubs_id, mongo_client.webrestapidb.clubs.find())

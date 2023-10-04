@@ -1,12 +1,13 @@
 import datetime
 
 class Player: 
-    def __init__(self, name, age, position):
+    def __init__(self, club, name, age, position):
         self.name = name
         self.position = position
         self.age = age
-        self.updatedAt = datetime.now()
-        self.createdAt = datetime.now()
+        self.club = club
+        self.updatedAt = datetime.datetime.now()
+        self.createdAt = datetime.datetime.now()
        
     def __repr__(self):
         return {k:str(v) for k,v in self.__dict__.items()}
@@ -31,6 +32,7 @@ class Player:
         self.updatedAt = datetime.now()
         collection.update_one({"name":name},{"$set":self.__repr__()})
         return self
+
 
     def delete(self,collection):
         collection.delete_one({"name":self.name})
