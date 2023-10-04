@@ -30,7 +30,7 @@ class Player:
             setattr(self, attribute, body.get(attribute))
 
         self.updatedAt = datetime.datetime.now()
-        collection.update_one({"club":club},{"name":name},{"age":age},{"position":position},{"$set":self.__repr__()})
+        collection.update_one({"club":club, "name":name, "age":age, "position":position},{"$set":self.__repr__()})
         return self
 
 
