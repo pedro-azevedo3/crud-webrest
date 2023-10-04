@@ -23,8 +23,8 @@ def list_player(request, mongo_client):
 
     if name_filter:
         filtered_players = [{k:str(v) if k == "_id" else v for k, v in player.items()} for player in filtered_players if player.get("name") == name_filter]
-        return jsonify({"data": [player.__repr__() for player in filtered_players]}), 200
-    return jsonify({"data": [pdf.__repr__() for pdf in filtered_players]}), 200
+        return jsonify({"data": filtered_players}), 200
+    return jsonify({"data": [{k:str(v) if k == "_id" else v for k, v in player.items()} for player in filtered_players]}), 200
 
 def get_player(player_id, mongo_client):
     player = Player.get(player_id, mongo_client.webrestapidb.players.find())

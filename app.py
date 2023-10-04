@@ -9,7 +9,7 @@ from app.services.club import (create, delete, list, get, patch)
 
 app = flask.Flask(__name__)
 cors = CORS(app)
-client = MongoClient('mongodb://45.6.38.11:27017')
+client = MongoClient('mongodb://45.6.38.11:27017') #localhost:27017
 
 #Player
 @app.route('/',methods=['GET'])
